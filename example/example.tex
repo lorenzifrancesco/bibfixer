@@ -1,0 +1,320 @@
+\documentclass[pra,twocolumn]{revtex4-2}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{psfrag}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{bm}
+\usepackage{color}
+\usepackage{verbatim,color}
+\usepackage{physics}
+\usepackage[normalem]{ulem}
+%\bibliographystyle{apsrev4-1}
+\usepackage[acronym]{glossaries}
+\newacronym{ssfm}{SSFM}{Split Step Fourier Method}
+\newacronym{bec}{BEC}{Bose-Einstein condensates}
+\newacronym{gpe}{GPE}{Gross-Pitaevskii equation}
+\newacronym{nlse}{NLSE}{Nonlinear Schrodinger equation}
+\newacronym{npse}{NPSE}{Non-Polynomial Schrodinger equation}
+\newacronym{cq}{CQ}{Cubic-Quintic}
+
+\begin{document}
+
+\title{Effective equations for the quasi-one dimensional collision \\ of a matter-wave soliton with a narrow barrier}
+
+\author{F. Lorenzi$^{1,2}$ and L. Salasnich$^{1,2,3}$}
+\affiliation{$^{1}$Dipartimento di Fisica e Astronomia "Galileo Galilei", 
+Universit\`a di Padova, Via Marzolo 8, 35131 Padova, Italy\\
+$^{2}$Istituto Nazionale di Fisica Nucleare (INFN), Sezione di Padova, via Marzolo 8, 35131 Padova, Italy\\
+$^{3}$Istituto Nazionale di Ottica (INO) del Consiglio Nazionale delle Ricerche (CNR), via Nello Carrara 1, 50019 Sesto Fiorentino, Italy}
+
+\begin{abstract}
+We report the result of systematic numerical simulation of the collision of a matter-wave soliton with a narrow potential barrier in the mean-field approximation. We investigate how the choice of the dimensional reduction for the Gross-Pitaevskii equation impacts the description of some features of the process, namely the transmission coefficient and the onset of mean-field collapse. Our results show that, by using the non-polynomial Schrodinger equation, the regime of high barrier energy and high velocity, described by the three-dimensional Gross-Pitaevskii equation is inaccessible, but by adopting a slight modification of the transverse width equation, corresponding the the true variational solution, the efficacy of the method is restored. We also provide a precise estimation of the critical velocity and barrier width for barrier-induced mean-field collapse in the full 3D case.
+\end{abstract}
+
+\maketitle
+%
+\begingroup
+\let\clearpage\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}\label{sec:intro}
+  Dynamics of quantum bright solitons in an attractive \gls{bec} have been intensely studied, since current experimental capabilities offer an unprecedented opportunity to test many-body theories in a ultracold Bose gas. Moreover, several technological applications are based on the possibility to generate and manipulate matter-wave solitons, such as interferometry \cite{helm-splitting}, quantum computing \cite{}, and quantum-enhanced metrology \cite{}.
+
+  On the theoretical point of view,  
+
+  The experimental possibility to generate bright matter-wave solitons has been demonstrated about two decades ago \cite{khaykovich-formation}. \cite{triaxial}
+
+  The problem of collision with a narrow potential building block of 
+  The recent interest in matter-wave interferometry is stimulating novel theoretical investigation on the usage of the \gls{gpe} as a predictive tool. 
+  In the typical setup of an interferometer, a matter-wave soliton is split by using a barrier (acting analogously as an optical beam splitter) and then recombined in a later stage, after the two split solitons have undergone the two different paths. The process is able to give information about the differential phase accumulated by the split solitons and has applications in metrology. In a typical interferometer, the paths are set by a deep potential geometry that sets the motion along a single dimension, and this is typically achieved using a tight transverse harmonic potential. Along the free dimension, another weak harmonic potential is set, or the path is arranged in a ring geometry.
+
+  On the theoretical point of view, by adding a barrier to the NLSE it becomes non integrable.
+
+  % BMF for quantum solitons
+  The collision dynamics with a potential barrier is particularly interesting, as it enables the possibility to create ``Schrodinger cat" states, exploring quantum entanglement phenomena \cite{gertj,gertjerenkengenerating2013}.
+  Furhtermore, atomic interferometers implemented are getting increasing interest \cite{helm,cuevas-interactions-2013}, and in these devices, the potential barrier represents the analogous to an optical beam splitter for an optical interferometer.
+  The \gls{gpe} model predicts a peculiar behavior of the interaction with the barrier: for sufficiently low velocities, the impinging soliton is either fully transmitted or fully reflected. 
+  This aspect has been investigated \cite{gertjerenkengenerating2013} and is frequently referred to as the particle behavior of the impinging soliton. It has been argued that the passage signals the quantum change???
+
+  On the mean-field size, various dimensional reduction methods have been proposed...
+
+  The paper is organized as follows: in \ref{sec:analytical} we review the \gls{gpe} model and the various methods that are available for obtaining a dimensional reduction. Also we briefly review the numerical method we are going to use.
+  In section \ref{sec:gs} we compare the ground states of the various dimensional reduction schemes, focusing in a strongly nonlinear regime, focusing also on the description of the transverse width. We also
+  In section \ref{sec:tran} we investigate the behaviour of the transmission coefficient for the collision process, and compare the effective equations. We conclude the work in \ref{a}. [...]
+
+  We believe the present work to be a useful contribution to the field of matter-wave soliton interferometr and quantum computing.
+
+  \begin{comment}
+  \cite{streltsovscattering2009} MCTDHB
+  \cite{deviation} cubic-quintic NLSE
+
+  quantum-enhance interferometry
+
+  Lewenstein Malomed - Although under extreme conditions the quantum fluctuations may split a mean-field soliton [29], it has
+  been concluded that, in a broad range of parameters relevant to the experiments, the matter–wave
+  solitary waves predicted by the mean-field description (i.e. found as stable localized solutions
+  to the Gross–Pitaevskii equation (GPE) [8]) are completely robust objects—in fact, in perfect
+  agreement with the experimental observations of these solitons [17]–[20]
+
+  Many studies focus on the 1D case, Lieb Liniger model full quantum ecc... Mean-field studies in the 3D to 1D crossover are not so well developed. 
+
+  gerj generating -> lewenstein malomed
+
+  fundamental component of an interferometer
+
+  helm -> analysis of quantum fluctuations and degradation on interferometry
+
+  high energy to low energy regime in soliton units...
+  \end{comment}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Effective equations}\label{sec:analytical}
+\subsection{Gross-Pitaevskii equations}
+  The model is based on the Hartree approximation for bosons \cite{liebexact}, using which it is possible to derive the following Lagrangian, called Gross-Pitaevskii Lagrangian, for the field $\psi$.
+  \begin{equation}\label{eq:3dlagrangian}
+      \mathcal{L}= \int d^3 \mathbf{r} \ \psi^* \left[i \hbar \partial_t+\frac{\hbar^2}{2 m} \nabla^2-U-\frac{g}{2}(N-1)|\psi|^2 \right] \psi,
+  \end{equation}
+  where $U$ is the potential set inside the trap, $N$ is the number of particles, and $g$ is the contact potential, that can be linked to the s-wave scattering length $a_s$ with the expression $g = \frac{4\pi \hbar^2 a_s}{m}$.
+  The associated Euler-Lagrange (EL) equation is called \gls{gpe}. Since it is an equation in three spatial dimensions, in our context we will refer to it as the 3D-\gls{gpe}.
+  \begin{equation}\label{eq:3dgpe}
+      i\hbar \dfrac{\partial}{\partial t}\psi = \left[-\dfrac{\hbar^2}{2m} \nabla^2 + U  + g(N-1)|\psi|^2\right]\psi
+  \end{equation}
+
+
+  Assuming a tight harmonic radial confinment
+  \begin{equation}
+      U(x, y, z) = \frac{1}{2}m\omega_\perp^2 (y^2+z^2) + V(x)
+  \end{equation}
+  one obtains a characteristic length scale $l_\perp = \sqrt{\frac{\hbar}{m\omega_\perp}}$.
+  The dimensional reduction of the 3D-\gls{gpe}, for obtaining an effective 1D wave equation, is done in many works by assuming that the wavefunction separates in a constant Gaussian transverse part $\phi$, which is the ground state of the transverse harmonic potential, and a time-varying axial component $f$ as 
+  \begin{equation}\label{eq:1dansats}
+      \psi(\mathbf{r}, t) = f(x, t) \phi(y, z)
+  \end{equation}
+  where
+  \begin{equation}
+      \phi(y, z) = \dfrac{1}{\sqrt{\pi} l_\perp} \exp\left[-\frac{y^2+z^2}{2l_\perp^2}\right]
+  \end{equation}
+  Inserting this ansatz into Eq. (\ref{eq:3dgpe}), and integrating along the transverse coordinates, one obtains the corresponding wave equation, called the 1D-\gls{gpe}:
+  \begin{equation}\label{eq:gpe}
+    i\hbar \dfrac{\partial}{\partial t}\phi = \left[-\dfrac{\hbar^2}{2m}\dfrac{\partial^2}{\partial x^2} + V(z) + g_{1D}|\phi|^2\right]\phi
+  \end{equation}
+  where we defined $g_{1D} = \frac{g (N-1)}{2\pi}$. When $g_{1D}<0$, stable solitons are ground states of the system.
+
+  \subsection{Improved equations}
+  However, a better approximation is to consider the separation of the total wavefunction in a transverse Gaussian component with variable width, and to find the equation of motion using a variational principle. This is indeed the approach followed in \cite{salasnich_effective_2002}. The function $\phi$ in the ansatz (\ref{eq:1dansats}) is substituted by
+  \begin{equation}
+      \phi(y, z, \sigma(x, t)) = \dfrac{1}{\sqrt{\pi} \sigma(x, t)} \exp\left[-\frac{y^2+z^2}{2\sigma(x, t)^2}\right]
+  \end{equation}
+  where $\sigma$ is a function to be determined as a variational parameter.
+  In the work \cite{salasnich_bose-einstein_2022}, the calculations have been done assuming that derivatives of $\sigma$ are negligible. If one include the terms in the calculations, it is possible to write the following effective 1D Lagrangian (detailed calculations are given in the Appendix)
+  \begin{equation}\label{eq:1dlagrangian_full}
+      \begin{split}
+          &\mathcal{L}= \int dx  \ f^* \bigg[i \hbar \frac{\partial}{\partial t} + \frac{\hbar^2}{2 m} \frac{\partial^2}{\partial x^2} - V +\\- &\frac{\hbar^2}{2m} \frac{1}{\sigma^2}\left(1+ \left(\frac{\partial}{\partial x} \sigma\right)^2 \right) - \frac{m\omega_\perp}{2}\sigma^2 - \frac{1}{2}g_{1D}|f|^2 \bigg] f.
+      \end{split}
+  \end{equation}
+
+  The corresponding EL equations for $f$ and $\sigma$ are readily obtained.
+  \begin{equation}\label{eq:ELf}
+  \begin{split}
+      &i \hbar \frac{\partial}{\partial t} f = \bigg[- \frac{\hbar^2}{2 m} \frac{\partial^2}{\partial x^2} + V +\\+ &\frac{\hbar^2}{2m} \frac{1}{\sigma^2}\left(1+ \left(\frac{\partial}{\partial x} \sigma\right)^2 \right) + \frac{m\omega_\perp}{2}\sigma^2 + g_{1D}|f|^2 \bigg],
+  \end{split}
+  \end{equation}
+  \begin{equation}\label{eq:ELsigma}
+  \begin{split}
+          \sigma^4 - l_\perp^4\left[1 + 2a_s|f|^2\right] +\\
+          +l_\perp^4\left[\sigma \frac{\partial^2}{\partial x^2} \sigma -\left(\frac{\partial}{\partial x}\sigma\right)^2\right] = 0
+  \end{split}
+  \end{equation}
+
+  By neglecting the derivative of $\sigma$, one can obtain the same effective 1D Lagrangian as in Ref. (\cite{salasnich_bose-einstein_2022}), whose EL equations correspond to
+  \begin{equation}\label{eq:NPSE}
+      \begin{split}
+      &i \hbar \frac{\partial}{\partial t} f = \bigg[- \frac{\hbar^2}{2 m} \frac{\partial^2}{\partial x^2} + V +\\+ &\frac{\hbar^2}{2m} \frac{1}{\sigma^2} + \frac{m\omega_\perp}{2}\sigma^2 + g_{1D}|f|^2 \bigg]f,
+      \end{split}
+  \end{equation}
+  \begin{equation}\label{eq:NPSEsigma}
+      \sigma^2 = l_\perp^2\sqrt{1+ 2a_s(N-1)|f|^2}.
+  \end{equation}
+  Eq. (\ref{eq:NPSE}) is called \gls{npse}.
+  We will use the 3D-\gls{gpe} as a reference equation, and compare the predictions of the 1D-\gls{gpe}, the \gls{npse}, and the \gls{npse} with the derivatives.
+
+
+  \subsection{Generalization of splitting energy bound}
+  The soliton solution has been obtained for the chemical potential of the stationary solution \cite{salasnich_effective_2002}:
+  \begin{equation}
+    (1-\mu)^{3/2} - \dfrac{3}{2}(1-\mu)^{1/2} \dfrac{3}{2\sqrt{2}} \gamma= 0
+  \end{equation}
+  where $\gamma=|a_s|N/a_{\perp}$. Using this equation we are able to find the ground state energy of the nonlinear wave equation corresponding to an $N$-particle soliton.
+  The minimum splitting kinetic energy follows from the theoretical considerations in \cite{helm_splitting_2014, wang_particle-wave_2012, gertjerenken_scattering_2012},
+  \begin{equation}
+      E_k > E_G\left(N-n\right) + E_G\left(n\right) - E_G(N),
+  \end{equation}
+  which follows from energy conservation, supposing zero final kinetic energy, after the interaction.
+  From the 1D-\gls{gpe}, the ground state energy function is 
+  \begin{equation}
+      E_G(N)= -\dfrac{N}{6} m a_s^2  \omega_\perp^2 N^2,
+  \end{equation}
+  instead, if we use a \gls{npse} model, the energy can be written as $E_G(n) = \int_0^n dn'\mu(n')$. 
+  The consequent forbidden region in the $T$, $v$ plane is described by the following inequality for the 1D-\gls{gpe}
+  where $T$ is the transmission coefficient.
+
+  \subsection{Numerical method}
+  All the equations are solved using the \gls{ssfm}, with Strang time splitting \cite{a}.
+
+  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical results}\label{sec:num}
+\begin{enumerate}\label{itemize_result}
+  \item Shape of the solitons for highly nonlinear regime Fig.~\ref{fig:GS} Fig.~\ref{fig:GS_zoom}
+  \item sigma 2 for the cases Fig.~\ref{fig:sigma2}
+  \item chemical potential for the various equations (NPSE is not satisfying the variational principle, VK criterion) Fig.~\ref{fig:mu}.
+  \item Numerical verification of the VK criterion.
+  \item Fake collapse of NPSE during barrier interaction (fixed by NPSE+) Fig.~\ref{fig:fake_collapse}
+  \item transmission heatmap for G3, NPSE, NPSE+, Fig.~\ref{fig:heatmap}
+  \item transmission vs velocity for NPSE and NPSE+ Fig.~\ref{fig:discontinuity}
+  \item transmission vs velocity for the collapsing case Fig.~\ref{fig:collapse}
+\end{enumerate}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/fig1_0.65_ground_states.pdf}
+  \caption{Comparison of the ground state of the 3D-\gls{gpe}, the 1D-\gls{gpe}, the \gls{npse}, and the \gls{npse} with derivatives. $\gamma=0.65$.}
+  \label{fig:GS}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/fig2_0.65_ground_states_zoom.pdf}
+  \caption{Comparison of the ground state of the 3D-\gls{gpe}, the 1D-\gls{gpe}, the \gls{npse}, and the \gls{npse} with derivatives. $\gamma=0.65$. Zoomed in.}
+  \label{fig:GS_zoom}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/fig3_compare_sigma2_065.pdf}
+  \caption{Comparison of the $\sigma^2$ [...] . $\gamma=0.65$}
+  \label{fig:sigma2}
+\end{figure}
+
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{}
+  \caption{}
+  \label{fig:mu}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/0.65_ground_states.pdf}
+  \caption{}
+  \label{fig:fake_collapse}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/0.65_ground_states.pdf}
+  \caption{}
+  \label{fig:heatmap}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/compare_lines.pdf}
+  \caption{}
+  \label{fig:discontinuity}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\columnwidth]{figures/compare_lines.pdf}
+  \caption{}
+  \label{fig:collapse}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}\label{sec:conclusions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Appendix}\label{sec:appendix}
+Let us start again from the 3D Lagrangian     
+	\begin{equation}
+     \begin{split}
+        \mathcal{L}= \int dx \int dy \, dz \ f^* \phi^*\left[i \hbar \partial_t + \right.\\\left.
+        +\frac{\hbar^2}{2 m} \nabla^2-U-\frac{1}{2} g_0(N-1)|f \phi|^2 \right] f \phi,
+     \end{split}
+	\end{equation}
+    we are interested in integrating along the transverse coordinates without neglecting the terms proportional to $\partial_z \sigma$ and $\partial_z^2 \sigma$. The novel terms arise from $i\hbar\partial_t (f\phi)$ and $\frac{\hbar}{2m}\nabla^2 (f\phi)$. By separating the derivatives, we have
+    \begin{equation}
+    	\begin{split}
+        &\mathcal{L}= \int dz \int dx dy  f^* \phi^*\biggl[i \hbar \phi \partial_t f + i \hbar f  \phi \left(\dfrac{y^2+z^2}{\sigma^3} - \dfrac{1}{\sigma}\right)\partial_t \sigma + \\ 
+        &+  \frac{\hbar^2}{2 m} (f\nabla_\perp^2 \phi+ f \partial_x^2 \phi + \phi\partial_x^2 f)-U f \phi-\frac{1}{2} g_0(N-1)|f \phi|^2 f \phi\biggr].
+    	\end{split}
+    \end{equation}
+    [...]
+  %   Integrating the term proportional to $\partial_t \sigma$ gives $0$, as one may realize looking at its prefactor. However, the term proportional to $\partial_z^2 \phi$ give a non null contribution to the 1D Lagrangian.
+  %   The integration gives
+  %   \begin{equation}
+  %       \begin{split}
+	% 	\mathcal{L}&= \int dz f^* \bigg[{i \hbar \partial t + \frac{\hbar^2}{2 m} \partial^2_z - V - -\frac{\hbar^2}{2m}\sigma^{-2} (1 + (\partial_z\sigma)^2) -\\ 
+  %       &-\dfrac{m \omega_{\perp}^2}{2} \sigma^2 - \frac{1}{2} \dfrac{g_0(N-1)}{2\pi}\sigma^{-2}|f|^2}\bigg]f.
+  %     \end{split}
+	% \end{equation}
+  %   Let us now consider the corresponding Euler-Lagrange equations. We will have a simple corrective term in the equation for $f$, 
+	% \begin{equation}
+  %       \begin{split}
+  %       &i\hbar \partial_t f = \left[-\dfrac{\hbar^2}{2m} \partial_z^2  + V + \right. \\ \left.
+  %        &+\dfrac{\hbar^2}{2m}\dfrac{1}{\sigma^{2}}  + \dfrac{m\omega_\perp^2}{2}\sigma^2 + \dfrac{N-1}{2\pi \sigma^2} g_0|f|^2 \right]f
+  %       \end{split}
+	% \end{equation}
+  %   and a term that transform the algebraic equation for $\sigma$ into a differential one:
+  %   \begin{equation}\label{eq:sigma}
+  %   \begin{split}
+  %   - m\omega_\perp^2\sigma + \left[\dfrac{\hbar^2}{m} + \dfrac{N-1}{2\pi} g_0|f|^2\right]\sigma^{-3} +\\+ \frac{\hbar^2}{m} \sigma^{-3}\left(\sigma\partial_z^2 \sigma - (\partial_z \sigma)^2 \right)= 0.
+  %   \end{split}
+	% \end{equation}
+
+\begin{thebibliography}{99} % 9 is the maximum number of references you expect to have
+
+\bibitem{khaykovich-formation}
+Khaykovich, L., Schreck, F., Ferrari, G., Bourdel, T., Cubizolles, J., Carr, L. D., Castin, Y., and Salomon, C. (2002). Formation of a matter-wave bright soliton. Science, 296(5571), 1290-1293.
+\bibitem{helm-splitting}
+J. Helm splitting
+\bibitem{triaxial}
+Mazzarella
+
+\end{thebibliography}
+
+\end{document}
+
+\begin{comment}
+  TODO - piano d'azione
+  - [ ] completare l'introduzione
+  - [ ] inserire i dettagli del metodo numerico
+  - [ ] inserire le figure per i ground states (gamma=0.65)
+  - [ ] inserire le figure per le relative sigma2 
+  - [ ] trovare $\gamma_c$ per 3D
+  -
+  - [ ] mu e principio variazioniale 
+  - [ ] dynamical instability
+\end{comment}

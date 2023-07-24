@@ -1,0 +1,14 @@
+Physical Review Letters, Phys. Rev. Lett.
+Physical Review A, Phys. Rev. A
+Physical Review B, Phys. Rev. B
+Physical Review C, Phys. Rev. C
+Physical Review D, Phys. Rev. D
+Physical Review E, Phys. Rev. E
+Physical Review X, Phys. Rev. X
+Physical Review Applied, Phys. Rev. Applied
+Physical Review Fluids, Phys. Rev. Fluids
+Physical Review Accelerators and Beams, Phys. Rev. Accel. Beams
+Physical Review Physics Education Research, Phys. Rev. Phys. Educ. Res.
+Reviews of Modern Physics, Rev. Mod. Phys.
+Physical Review Special Topics - Accelerators and Beams, Phys. Rev. ST Accel. Beams
+Physical Review Special Topics - Physics Education Research, Phys. Rev. ST Phys. Educ. Res.
