@@ -9,8 +9,13 @@ def read_journal_abbreviations(filename):
             abbreviations[full_name.strip()] = abbreviation.strip()
     return abbreviations
 
-def convert_to_thebibliography(bib_file, journal_abbreviations):
-    """Convert a .bib file to \thebibliography items in the Physical Review A style."""
+def add_journal_abbreviation(filename, full, abbreviation):
+  with open(filename, 'a') as file:
+    file.write(full + ", "+ abbreviation + "\n")
+  return   
+   
+def convert_to_thebibliography(bib_file, abbr_file):
+    journal_abbreviations = read_journal_abbreviations(abbr_file)
     bib_data = parse_file(bib_file)
     print(bib_data)
     output = "\\begin{thebibliography}{99}\n"
@@ -19,12 +24,10 @@ def convert_to_thebibliography(bib_file, journal_abbreviations):
         output += f"\\bibitem{{{entry_key.strip()}}}\n"
         if entry.type == "article":
 
-          print(entry)
           title = entry.fields['title'] 
           author = ""
           for xx in entry.persons['author']:
             for i in xx.first_names:
-              print("\n", i)
               author += i + " "
             for i in xx.middle_names:
               author += i + " "
@@ -35,30 +38,37 @@ def convert_to_thebibliography(bib_file, journal_abbreviations):
           # Replace journal name with abbreviation if available
           if journal in journal_abbreviations:
               journal = journal_abbreviations[journal]
+          else:
+            print("Abbreviation for ``" + journal + "`` not found.")
+            abbreviation = input("\n\tEnter abbreviation : ")
+            add_journal_abbreviation(abbr_file, journal, abbreviation)
 
           output += f"{author} {journal} "
 
           try:
             volume = entry.fields['volume']
-            output += f"\\textbf{{volume}}, "
+            output += f"\\textbf{{{volume}}}, "
           except:
             print("No volume!!!")
 
-          try:
-            number = entry.fields['number']
-            output += f"{number}"
-          except:
-            print("No number!!!")
+          # try:
+          #   number = entry.fields['number']
+          #   output += f"{number} "
+          # except:
+          #   print("No number!!!")
           
           try:
             pages = entry.fields['pages']
-            output += f"{pages}."
+            output += f"{pages} "
           except:
             print("No pages!!!")
-
+          date = entry.fields['date']
+          output += f" ({date})."
           output += "\n\n"
         elif entry.type == "incollection":
            print("INCOLLECTION!!!")
+           output += entry_key.strip()
+           output += "\n\n"
         elif entry.type == "book":
           print("BOOK!!!") 
 
@@ -67,10 +77,10 @@ def convert_to_thebibliography(bib_file, journal_abbreviations):
 
 if __name__ == "__main__":
     # Replace 'journal_abbreviations.txt' with the actual file containing journal abbreviations
-    journal_abbreviations = read_journal_abbreviations('journal_abbreviations.txt')
+
     output_file = "thebibliography.tex"
     # Replace 'input.bib' with the actual name of your .bib file
-    converted_text = convert_to_thebibliography('example/sorted_ordered.bib', journal_abbreviations)
+    converted_text = convert_to_thebibliography('collision.bib', 'journal_abbreviations.txt')
 
     # Print or save 'converted_text' to a file to get the \thebibliography formatted output
     # print(converted_text)

@@ -39,72 +39,9 @@ def keep_fields_in_bib_file(input_file, output_file, fields_to_keep):
                 del entry.fields[field]
 
     bib_data.to_file(output_file)
-
-
-def extract_year_from_date(date_str):
-    # Function to extract the year from different date formats
-    try:
-        # Trying to parse the date in the format 'YYYY-MM-DD'
-        return date_str.split('-')[0]
-    except IndexError:
-        pass
-
-    try:
-        # Trying to parse the date in the format 'YYYY/MM/DD'
-        return date_str.split('/')[0]
-    except IndexError:
-        pass
-
-    try:
-        # Trying to parse the date in the format 'YYYY'
-        return date_str
-    except IndexError:
-        pass
-
-    # If the date cannot be parsed, return an empty string
-    return ''
-
-def keep_year_in_bib_file(input_file, output_file):
-    bib_data = parse_file(input_file)
-
-    for entry_key in bib_data.entries:
-        entry = bib_data.entries[entry_key]
-        for field in list(entry.fields.keys()):
-            if field.lower() == 'date':
-                # Keep only the year from the date field
-                entry.fields[field] = extract_year_from_date(entry.fields[field])
-
-    bib_data.to_file(output_file)
-
-def add_comma_to_field_lines(bib_file_path):
-    # Read the contents of the .bib file
-    with open(bib_file_path, 'r') as f:
-        bib_content = f.readlines()
-
-    modified_lines = []
-
-    # Iterate through each line in the .bib file
-    for line in bib_content:
-        line = line.strip()
-        if line.startswith('@') or line.startswith('}'):
-            # For entries or closing braces, we don't modify them
-            modified_lines.append(line)
-        elif line.endswith(','):
-            # If the line already ends with a comma, we don't modify it
-            modified_lines.append(line)
-        elif len(line.strip())==0:
-            modified_lines.append(line)
-        else:
-            # If the line doesn't end with a comma, we add one
-            modified_lines.append(line + ',')
-
-    # Write the modified content back to the .bib file
-    with open(bib_file_path, 'w') as f:
-        f.write('\n'.join(modified_lines))
-
-
+    
 def main():
-    bib_file_path = 'collision.bib'  # Replace this with the path to your .bib file
+    bib_file_path = 'example/sorted_ordered.bib'  # Replace this with the path to your .bib file
 
     citation_keys = extract_citation_keys(bib_file_path)
 

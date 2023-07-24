@@ -1,5 +1,3 @@
-Physical Review Letters, Phys. Rev. Lett.
-Physical Review A, Phys. Rev. A
 Physical Review B, Phys. Rev. B
 Physical Review C, Phys. Rev. C
 Physical Review D, Phys. Rev. D
@@ -12,3 +10,26 @@ Physical Review Physics Education Research, Phys. Rev. Phys. Educ. Res.
 Reviews of Modern Physics, Rev. Mod. Phys.
 Physical Review Special Topics - Accelerators and Beams, Phys. Rev. ST Accel. Beams
 Physical Review Special Topics - Physics Education Research, Phys. Rev. ST Phys. Educ. Res.
+Physical Review A, Phys. Rev. A
+Mathematics and Computers in Simulation, Math. Comput. Simul.
+Physics Letters A, Phys. Lett. A
+New Journal of Physics, New J. Phys.
+Journal of Computational Physics, J. Comput. Phys.
+Physics Reports, Phys. Rep.
+{SIAM} Journal on Scientific Computing, SIAM J. Sci. Comput.
+{SIAM} Journal on Scientific Computing, SIAM J. Sci. Comput.
+Physical Review Letters, Phys. Rev. Lett.
+Physica D: Nonlinear Phenomena, Physica D
+Physica D: Nonlinear Phenomena, Physica D
+Comptes Rendus de l'Académie des Sciences - Series {IV} - Physics, C. R. Phys.
+Journal of Experimental and Theoretical Physics, J. Exp. Theor. Phys.
+Applied Mathematics and Computation, Appl. Math. Comput.
+{SIAM} Journal on Numerical Analysis, SIAM J. Numer. Anal.
+Journal of Computational Physics, SIAM J. Numer. Anal.
+Physical Review Letters, Phys. Rev. Lett.
+Communications Physics, Comm. Phys.
+Science, Science
+Physica Scripta, Phys. Scr.
+Computer Physics Communications, Comput. Phys. Commun.
+Journal of Physics A: Mathematical and Theoretical, J. Phys. A: Math. Theor.
+Nature, Nature
