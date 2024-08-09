@@ -67,14 +67,47 @@ def extract_year_from_date(date_str):
 def keep_year_in_bib_file(input_file, output_file):
     bib_data = parse_file(input_file)
 
+    journal_abbreviations = read_journal_abbreviations("journal_abbreviations.txt")
     for entry_key in bib_data.entries:
         entry = bib_data.entries[entry_key]
+        if entry.type == "article":
+            print(entry.fields['journaltitle'])
+            if  entry.fields['journaltitle'] in journal_abbreviations:
+              entry.fields['journaltitle'] = journal_abbreviations[entry.fields['journaltitle']]
+            else:
+              print("Abbreviation for ``" + entry.fields['journaltitle'] + "`` not found.")
+              abbreviation = input("\n\tEnter abbreviation : ")
+              add_journal_abbreviation("journal_abbreviations.txt", entry.fields['journaltitle'], abbreviation)
         for field in list(entry.fields.keys()):
+          
+            
+          if entry.type == "article":
+            entry.fields['journal'] = entry.fields['journaltitle']
             if field.lower() == 'date':
+                print("HIT")
                 # Keep only the year from the date field
                 entry.fields[field] = extract_year_from_date(entry.fields[field])
+                try:
+                  entry.fields['year'] = entry.fields['date']
+                except:
+                  pass
+    print(bib_data)
+    bib_data.to_file(output_file) 
 
-    bib_data.to_file(output_file)
+def add_journal_abbreviation(filename, full, abbreviation):
+  with open(filename, 'a') as file:
+    file.write(full + ", "+ abbreviation + "\n")
+  return   
+
+def read_journal_abbreviations(filename):
+    """Read journal abbreviations from a file and return them as a dictionary."""
+    abbreviations = {}
+    with open(filename, 'r') as file:
+        for line in file:
+            full_name, abbreviation = line.strip().split(',')
+            abbreviations[full_name.strip()] = abbreviation.strip()
+    return abbreviations
+
 
 def add_comma_to_field_lines(bib_file_path):
     # Read the contents of the .bib file
@@ -115,7 +148,7 @@ def main():
     else:
         print("No citation keys found in the .bib file.")
     
-    fields_to_keep = ['author', 'title', 'date', 'journaltitle', 'pages', 'volume', 'number']  # Replace with the names of the fields you want to remove
+    fields_to_keep = ['author', 'title', 'date', 'journal','journaltitle', 'pages', 'volume', 'number']  # Replace with the names of the fields you want to remove
     keep_fields_in_bib_file(bib_file_path, bib_file_path, fields_to_keep)
     keep_year_in_bib_file(bib_file_path, bib_file_path)
     add_comma_to_field_lines(bib_file_path)

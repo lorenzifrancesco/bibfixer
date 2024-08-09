@@ -28,6 +28,8 @@ def convert_to_thebibliography(bib_file, abbr_file):
           author = ""
           for xx in entry.persons['author']:
             for i in xx.first_names:
+              if i[-1] != ".":
+                i = i[0] + "."
               author += i + " "
             for i in xx.middle_names:
               author += i + " "
