@@ -28,11 +28,11 @@ def main():
             for key in citation_keys:
                 output.write(key + '\n')
         with open(unique_output_file, 'w', encoding='utf-8') as output:
-            prev_key = ""
+            prev_key = set()
             for key in citation_keys:
-              if prev_key != key:
+              if key not in prev_key:
                 output.write(key + '\n')
-                prev_key = key
+                prev_key.add(key)
     except IOError:
         print(f"Error: Unable to write to '{output_file}'.")
 
