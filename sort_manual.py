@@ -31,7 +31,7 @@ def sort_and_filter_bibitems(citation_keys, tex_content):
 
 def main():
     citation_keys_file = 'output/unique_citation_keys.txt'  # Replace this with the path to the citation keys file
-    tex_file = 'input/main_manual.tex'  # Replace this with the path to the .tex file
+    tex_file = 'input/main.tex'  # Replace this with the path to the .tex file
 
     citation_keys = read_citation_keys(citation_keys_file)
     if not citation_keys:

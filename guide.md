@@ -1,7 +1,7 @@
 # Formatting the bibliography in the right order in BibLaTeX and plain LaTeX
 How many times we need to submit articles with manual bibliographies, because of some annoying old BibTex/Natbib packages that simply do not work in a plain manner, but nonetheless are the "way to go" of common journals?
 Wouldn't it be better if we had a tool just to do it last minute without worrying, after focusing on the article content, instead of the BibTeX errors and the correct order of the manual bibliography? 
-This is the package for 
+This is the package for you. 
 
 ## Overview of the scripts
 ### Using BibLaTeX
@@ -16,7 +16,7 @@ and the article is ready for shipping.
 ### Using manual bibliography
 1. write the damn article using the citation keys you write inside the manual bibliography
 3. extract the order of the citations appearing in the manuscript using ``extract_keys.py``
-4. sort the bibliography file using ``sort_bib.py``
+4. sort the bibliography file using ``sort_manual.py``
 5. copy-paste the sorted bibliography back again in the source file
 
 and the article is ready for shipping.

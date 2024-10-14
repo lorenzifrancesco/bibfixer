@@ -28,7 +28,7 @@ def sort_and_filter_bib_entries(citation_keys, bib_content):
     return sorted_entries
 
 def main():
-    citation_keys_file = 'citation_keys.txt'  # Replace this with the path to the citation keys file
+    citation_keys_file = 'output/citation_keys.txt'  # Replace this with the path to the citation keys file
     bib_file = 'example/example.bib'  # Replace this with the path to the BibLaTeX .bib file
 
     citation_keys = read_citation_keys(citation_keys_file)
