@@ -1,7 +1,7 @@
 # Formatting the bibliography in the right order in BibLaTeX and plain LaTeX
 How many times we need to submit articles with manual bibliographies, because of some annoying old BibTex/Natbib packages that simply do not work in a plain manner, but nonetheless are the "way to go" of common journals?
 Wouldn't it be better if we had a tool just to do it last minute without worrying, after focusing on the article content, instead of the BibTeX errors and the correct order of the manual bibliography? 
-This is the package for you. 
+The answer is yes. 
 
 ## Overview of the scripts
 ### Using BibLaTeX
