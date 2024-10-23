@@ -2,55 +2,45 @@ import os
 import re
 
 
-def list_tex_files(folder_path):
+def list_tex_files(folder_path, filename=None):
     # List all .tex files in the given folder
     tex_files = [f for f in os.listdir(folder_path) if f.endswith('.tex')]
 
-    if not tex_files:
-        print("No .tex files found in the folder.")
-        return None
+    if filename==None:
+      if not tex_files:
+          print("No .tex files found in the folder.")
+          return None
 
-    # Display the .tex files as options
-    print("Select a .tex file:")
-    for idx, file in enumerate(tex_files):
-        print(f"{idx + 1}: {file}")
+      # Display the .tex files as options
+      print("Select a .tex file:")
+      for idx, file in enumerate(tex_files):
+          print(f"{idx + 1}: {file}")
 
-    # Get user's choice
-    while True:
-        try:
-            choice = int(
-                input("\nEnter the number corresponding to the file: ")) - 1
-            if 0 <= choice < len(tex_files):
-                return folder_path+tex_files[choice]
-            else:
-                print("Invalid choice. Try again.")
-        except ValueError:
-            print("Please enter a valid number.")
-
+      # Get user's choice
+      while True:
+          try:
+              choice = int(
+                  input("\nEnter the number corresponding to the file: ")) - 1
+              if 0 <= choice < len(tex_files):
+                  return folder_path+tex_files[choice]
+              else:
+                  print("Invalid choice. Try again.")
+          except ValueError:
+              print("Please enter a valid number.")
+    else:
+      return folder_path+filename
 
 class ManualBibFixer:
-
-    def __init__(self) -> None:
+    def __init__(self, filename=None) -> None:
         folder_path = "./input/"
-        self.main = list_tex_files(folder_path)
+        self.main = list_tex_files(folder_path, filename)
         self.keys = "output/citation_keys.txt"
         self.unique_keys = "output/unique_citation_keys.txt"
         self.sorted = "output/sorted.tex"
         
         
-    def extract(self):
-        try:
-            with open(self.main, 'r', encoding='utf-8') as file:
-                latex_source = file.read()
-        except FileNotFoundError:
-            print(f"Error: File '{self.main}' not found.")
-            return
-
-        citation_pattern = r'\\(?:cite(?:[pt]?|author)?|nocite)\{([^}]+)\}'
-        citation_keys = []
-        for match in re.finditer(citation_pattern, latex_source):
-            keys = match.group(1).split(',')
-            citation_keys.extend(key.strip() for key in keys)
+    def extract(self):          
+        citation_keys = self.extract_citation_keys()
         try:
             with open(self.keys, 'w', encoding='utf-8') as output:
                 for key in citation_keys:
@@ -109,18 +99,27 @@ class ManualBibFixer:
       
       
     def extract_citation_keys(self):
+      try:
+        with open(self.main, 'r', encoding='utf-8') as file:
+            latex_source = file.read()
+      except FileNotFoundError:
+          print(f"Error: File '{self.main}' not found.")
+          return
+
       citation_pattern = r'\\(?:cite(?:[pt]?|author)?|nocite)\{([^}]+)\}'
       citation_keys = []
-      for match in re.finditer(citation_pattern, self.main):
+      for match in re.finditer(citation_pattern, latex_source):
           keys = match.group(1).split(',')
           citation_keys.extend(key.strip() for key in keys)
+      
       return citation_keys
 
 
     def extract_bibliography_keys(self):
         bibliography_pattern = r'\\bibitem\{([^}]+)\}'
         bibliography_keys = []
-        for match in re.finditer(bibliography_pattern, self.main):
+        tex_content = self.read_tex_file()
+        for match in re.finditer(bibliography_pattern, tex_content):
             keys = match.group(1)
             bibliography_keys.append(keys.strip())
         return bibliography_keys
@@ -132,7 +131,9 @@ class ManualBibFixer:
 
       citations_set = set(citation_keys)
       bibliography_set = set(bibliography_keys)
-
+      if len(citations_set)==0 or len(bibliography_set)==0:
+         print("\033[31mWARN\033[0m empty citations or bibliography sets")
+         
       if citations_set == bibliography_set:
           print("- All and only citations in the text are present in the bibliography.")
       else:
